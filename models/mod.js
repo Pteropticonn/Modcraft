@@ -1,10 +1,13 @@
-
-const mongoose = require('mongooze');
+const mongoose = require('mongoose');
 const modSchema = new mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required: true
     },
+    modpacks: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Mod'
+    }],
     fileSize: {
         type: Number,
         required: true
@@ -16,10 +19,12 @@ const modSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
-    },  
-    genre: {
+    },
+    category: [ {
         type: String,
         required: false
-    }
+    }]
 
 });
+
+module.exports = mongoose.model('Mod', modSchema);

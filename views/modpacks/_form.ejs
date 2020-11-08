@@ -1,0 +1,21 @@
+<form action="<%= (typeof actionPath === 'undefined') ? '/modpacks' : actionPath %>", method="POST">
+    <% if (typeof actionPath !== 'undefined') { %>
+      <input type="hidden" name="id" value="<%= formData.id %>">
+    <% } %>
+  
+    <% const mods = ["Botania", "Biomes o' plenty", "Industrial Engineering", "Animania", "JEI"] %>
+    <div class="form-group">
+      <label for="modpack">Modpack</label>
+        <input type="string" name="title" class="form-control" value="<%= formData.title %>">
+    </div>
+
+    <div class="form-group">
+        <label for="modpack">Theme</label>
+          <input type="string" name="theme" class="form-control" value="<%= formData.theme %>">
+      </div>
+  
+    <div class="form-group">
+      <button class="btn btn-dark">Submit</button>
+    </div>
+  </form>
+  
