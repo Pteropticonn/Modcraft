@@ -29,7 +29,7 @@ exports.show = async (req, res) => {
         modpack: modpack
       });
     } catch (error) {
-      req.flash('danger', `There was an error displaying this reservation: ${error}`);
+      req.flash('danger', `There was an error displaying this modpack: ${error}`);
       res.redirect('/');
     }
   };
@@ -42,16 +42,17 @@ exports.show = async (req, res) => {
   
   exports.create = async (req, res) => {
     try {
-      const { user: userName } = req.session.passport;
-      const user = await User.findOne({userName: userName});
-      const modpack = await Modpack.create({user: user._id, ...req.body});
+      //TODO: relationship between modpacks and users to be reworked based on a number of factors
+      /*const { user: userName } = req.session.passport;
+      const user = await User.findOne({userName: userName});*/
+      const modpack = await Modpack.create({...req.body});
   
-      req.flash('success', 'Reservation created successfully');
-      res.redirect(`/reservations/${reservation.id}`);
+      req.flash('success', 'Modpack created successfully');
+      res.redirect(`/modpacks/${modpack.id}`);
     } catch (error) {
-      req.flash('danger', `There was an error creating this reservation: ${error}`);
+      req.flash('danger', `There was an error creating this modpack: ${error}`);
       req.session.formData = req.body;
-      res.redirect('/reservations/new');
+      res.redirect('/modpacks/new');
     }
   };
   
@@ -71,21 +72,21 @@ exports.show = async (req, res) => {
   
   exports.update = async (req, res) => {
     try {
-      const { user: email } = req.session.passport;
-      const user = await User.findOne({email: email});
+      // const { user: email } = req.session.passport;
+      // const user = await User.findOne({email: email});
   
-      let reservation = await Reservation.findById(req.body.id);
-      if (!reservation) throw new Error('Reservation could not be found');
+      let modpack = await Modpack.findById(req.body.id);
+      if (!modpack) throw new Error('Modpack could not be found');
   
-      const attributes = {user: user._id, ...req.body};
-      await Reservation.validate(attributes);
-      await Reservation.findByIdAndUpdate(attributes.id, attributes);
+      const attributes = {...req.body};
+      await Modpack.validate(attributes);
+      await Modpack.findByIdAndUpdate(attributes.id, attributes);
   
-      req.flash('success', 'The reservation was updated successfully');
-      res.redirect(`/reservations/${req.body.id}`);
+      req.flash('success', 'The modpack was updated successfully');
+      res.redirect(`/modpacks/${req.body.id}`);
     } catch (error) {
-      req.flash('danger', `There was an error updating this reservation: ${error}`);
-      res.redirect(`/reservations/${req.body.id}/edit`);
+      req.flash('danger', `There was an error updating this modpack: ${error}`);
+      res.redirect(`/modpacks/${req.body.id}/edit`);
     }
   };
   
@@ -93,10 +94,10 @@ exports.show = async (req, res) => {
     try {
       console.log(req.body);
       await Modpack.deleteOne({_id: req.body.id});
-      req.flash('success', 'The reservation was deleted successfully');
+      req.flash('success', 'The modpack was deleted successfully');
       res.redirect(`/modpacks`);
     } catch (error) {
-      req.flash('danger', `There was an error deleting this reservation: ${error}`);
+      req.flash('danger', `There was an error deleting this modpack: ${error}`);
       res.redirect(`/modpacks`);
     }
   };

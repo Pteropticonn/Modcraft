@@ -1,28 +1,21 @@
 <%- include ('../partials/header') %>
 
 <div class="container my-5">
-  <header>
-    <h1>
-      <Reservation for <%= modpack.title %>>
-    </h1>
-  </header>
-  <hr>
-  <div>
-    <p>
-      <strong>For:</strong>&nbsp;<%= reservation.user.fullname %>
-      <br>
-      <strong>At:</strong>&nbsp;<%= reservation.time %>
+  <div class="jumbotron">
+    <h1 class="display-4"><%= modpack.title %></h1>
+    <p class="lead">Theme: <%= modpack.theme %>.</p>
+    <hr class="my-4">
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Future Conflict Resolver</a>
     </p>
-  </div>
-  <hr>
-  <div>
-    <a href="/reservations/<%= reservation.id %>/edit"><i class="fa fa-edit">&nbsp;</i>Change your reservation</a>
+    <hr class="my-4">
+    <a href="/modpacks/<%= modpack.id %>/edit"><i class="fa fa-edit">&nbsp;</i>Alter Modpack</a>
     <br>
-    <form class="form-inline" action="/reservations/delete" method="post" onsubmit="return confirm('Are you sure you want to cancel your reservation?');">
-      <input type="hidden" value="<%= reservation.id %>" name="id">
+    <form class="form-inline" action="/modpacks/delete" method="post" onsubmit="return confirm('Really remove modpack?');">
+      <input type="hidden" value="<%= modpack.id %>" name="id">
       <button class="delete" type="submit">
         <i class="fa fa-trash">&nbsp;</i>
-        Cancel your reservation
+        Delete modpack
       </button>
     </form>
   </div>

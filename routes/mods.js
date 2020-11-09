@@ -6,6 +6,6 @@ router.get('/mods', index);
   router.post('/mods', create); 
   router.post('/mods/update', update); 
   router.post('/mods/delete', _delete); 
-  router.post('/mods/:id/edit', edit);
+  router.get('/mods/:id/edit', edit);
   router.get('/mods/:id', show); 
 };

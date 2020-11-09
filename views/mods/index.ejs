@@ -2,34 +2,32 @@
 
 <div class="container my-5">
   <header>
-    <h1>Reservations</h1>
+    <h1>Mod Library</h1>
   </header>
 
   <hr>
 
   <div class="content">
-    <% for (let reservation of reservations) { %>
-      <div class="card my-5">
-        <div class="card-header">
-          <h5 class="card-title">
-            for: <%= reservation.restaurantName %>
-          </h5>
-        </div>
+    <% for (let mod of mods) { %>
+   
 
-        <div class="card-body">
-          <p class="card-text">
-            Your reservation is for <strong><%= reservation.time %></strong> for <%= reservation.guestQuantity %>. Please be on time to avoid losing your seat.
+        <div class="jumbotron">
+          <h1 class="display-4"><%= mod.title %></h1>
+          <p class="lead"><%= mod.description %>.</p>
+          <hr class="my-4">
+          <p>Current Version: <%= mod.version %></p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Version Control w/ feature comparison via changelog coming soon</a>
           </p>
         </div>
-
         <div class="card-footer text-muted">
-          <a href="/reservations/<%= reservation.id %>/edit"><i class="fa fa-edit">&nbsp;</i>Change your reservation</a>
+          <a href="/mods/<%= mod.id %>/edit"><i class="fa fa-edit">&nbsp;</i>Edit Mod Labels, eventual in-browser manipulation of .ini .config files</a>
           <br>
-          <form class="form-inline" action="/reservations/delete" method="post" onsubmit="return confirm('Are you sure you want to cancel your reservation?');">
-            <input type="hidden" value="<%= reservation.id %>" name="id">
+          <form class="form-inline" action="/mods/delete" method="post" onsubmit="return confirm('Remove mod from your library?');">
+            <input type="hidden" value="<%= mod.id %>" name="id">
             <button class="delete" type="submit">
               <i class="fa fa-trash">&nbsp;</i>
-              Cancel your reservation
+              Remove Mod
             </button>
           </form>
         </div>

@@ -17,7 +17,7 @@ const modpackSchema = new mongoose.Schema({
     },
     size: {
         type: Number,
-        required: true
+        required: false
     },
     theme: {
         type: String,

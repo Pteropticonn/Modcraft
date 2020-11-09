@@ -6,6 +6,6 @@ router.get('/modpacks', index);
   router.post('/modpacks', create); 
   router.post('/modpacks/update', update); 
   router.post('/modpacks/delete', _delete); 
-  router.post('/modpacks/:id/edit', edit);
+  router.get('/modpacks/:id/edit', edit);
   router.get('/modpacks/:id', show); 
 };

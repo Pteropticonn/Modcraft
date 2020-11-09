@@ -10,7 +10,7 @@ const modSchema = new mongoose.Schema({
     }],
     fileSize: {
         type: Number,
-        required: true
+        required: false
     },
     version: {
         type: Number,
@@ -22,7 +22,7 @@ const modSchema = new mongoose.Schema({
     },
     category: [ {
         type: String,
-        required: false
+          required: false
     }]
 
 });

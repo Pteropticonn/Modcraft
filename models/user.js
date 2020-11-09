@@ -27,14 +27,14 @@ const UserSchema = new mongoose.Schema({
         message: props => `${props.value} exists. Please try a new email or login`
       }
     ]
-  },
+  }, 
   modpacks: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Modpack'
   }],
   mods: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Mod',
+    ref: 'Mod'
     //TODO: replace String values with associated ids from documents
     // default: ["Botania", "Biomes o' plenty", "Industrial Engineering", "Animania", "JEI"]
   }],
