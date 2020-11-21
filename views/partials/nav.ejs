@@ -1,70 +1,90 @@
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="bg-indigo-700 p-4 navbar navbar-expand-lg">
   <a href="/" class="navbar-brand">Modcraft</a>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto flex">
+
       <li class="nav-item">
-        <a href="/" class="nav-link">Home</a>
+        <!-- <img src="/images/home.svg" width="20" alt="Logo" class="mr-2 nav-item"> -->
+        <a href="/" class="text-indigo-200 mr-2 my-3 hover:text-red-500">Home</a>
       </li>
-
-      <% if (authorized) { %>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" id="modsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Mods
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="modsDropdown">
-            <div class="dropdown-item">
-              <img src="/images/envelope.png" alt="">
-              <a href="/mods">Mod Library</a>
-            </div>
-            
-            <div class="dropdown-divider"></div>
-            
-            <a href="/mods/new" class="dropdown-item">Browse Mod Repository</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" id="modpackDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            modpacks
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="modpackDropdown">
-            <a href="/modpacks" class="dropdown-item">Your Modpacks</a>
-            <div class="dropdown-divider"></div>
-            <a href="/modpacks/new" class="dropdown-item">Community Packs</a>
-          </div>
-        </li>
-      <% } %>
-    </ul>
-
-    <ul class="navbar-nav">
-      <% if (authorized) {%>
-        <li class="nav-item">
-          <a href="/logout" class="nav-link">
-            <i class="fa fa-sign-out"></i>
-            Logout
-          </a>
-        </li>
-      <%} else { %>
-        <li class="nav-item">
-          <a href="/register" class="nav-link">
-            <i class="fa fa-user-plus"></i>
-            Register
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="/login" class="nav-link">
-            <i class="fa fa-sign-in"></i>
-            Login
-          </a>
-        </li>
-      <% } %>
-    </ul>
+      <li class="nav-item">
+        <a href="#" class="text-indigo-200 hover:text-red-500">About</a>
+      </li>
   </div>
+  <ul class="navbar-nav">
+  <% if (authorized) { %>
+  <li class=" nav-item dropdown">
+      <a href="#"
+        class="nav-link inline-block py-2 px-4 text-yellow-700 bg-yellow-400 hover:bg-yellow-300 hover:text-yellow-800-rounded rounded transition ease-in duration-150
+        dropdown-toggle" id="modsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Mods
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="modsDropdown">
+        <div class="dropdown-item">
+
+          <a href="/mods"><img src="/images/envelope.png" alt=""></a>
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <a href="/mods/new" class="dropdown-item">Browse Mod Repository</a>
+      </div>
+      </li>
+      <li class="nav-item dropdown px-2">
+        <a href="#"
+        class="nav-link inline-block py-2 px-4 text-yellow-700 bg-yellow-400 hover:bg-yellow-300 hover:text-yellow-800-rounded rounded transition ease-in duration-150
+        dropdown-toggle" id="modpackDropdown" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Modpacks
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="modpackDropdown">
+          <a href="/modpacks" class="dropdown-item">Your Modpacks</a>
+          <div class="dropdown-divider"></div>
+          <a href="/modpacks/new" class="dropdown-item">Community Packs</a>
+        </div>
+      </li>
+  <% } %>
+
+
+
+  <!-- <div>
+    
+    
+  </div> -->
+
+  
+    <% if (authorized) {%>
+
+    <li class="nav-item">
+      <a href="/logout"
+        class="inline-block py-2 px-4 text-yellow-700 bg-yellow-400 hover:bg-yellow-300 hover:text-yellow-800-rounded rounded transition ease-in duration-150">
+        <i class="fa fa-user-plus"></i>
+        Logout
+      </a>
+    </li>
+    <%} else { %>
+    <li class="nav-item">
+      <a href="/register"
+        class="inline-block py-2 px-4 text-yellow-700 bg-yellow-400 hover:bg-yellow-300 hover:text-yellow-800-rounded rounded transition ease-in duration-150">
+        <i class="fa fa-user-plus"></i>
+        Register
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="/login" class="inline-block p-2 text-indigo-200 hover:text-indigo-100 mr-2">
+        <i class="fa fa-sign-in"></i>
+        Login
+      </a>
+    </li>
+    <% } %>
+  </ul>
+
 </nav>
