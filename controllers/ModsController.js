@@ -1,6 +1,5 @@
 const viewPath = 'mods';
 const Mod = require('../models/mod');
-const mods = require('../routes/mods');
 const User = require('../models/user');
 
 exports.index = async (req, res) => {
@@ -110,7 +109,7 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
   try {
     console.log(req.body);
-    await od.deleteOne({
+    await Mod.deleteOne({
       _id: req.body.id
     });
     req.flash('success', 'The mod was deleted successfully');

@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const passport = require('passport');
 const session = require('express-session');
 app.use(session({
-  secret: 'any salty secret here',
+  secret: 'Cows',
   resave: true,
   saveUninitialized: false
 }));
