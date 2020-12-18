@@ -4,7 +4,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const UserSchema = new mongoose.Schema({
   userName: {
     type: String,
-    required: true
+    required: false
   },
   email: {
     type: String,
@@ -69,8 +69,8 @@ UserSchema.virtual('passwordConfirmation')
     this._passwordConfirmation = value;
   });
 
-UserSchema.plugin(passportLocalMongoose, {
-  usernameField: 'email'
-});
+// UserSchema.plugin(passportLocalMongoose, {
+//   usernameField: 'email'
+// });
 
 module.exports = mongoose.model('User', UserSchema);
