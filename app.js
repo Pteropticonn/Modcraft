@@ -4,8 +4,8 @@ require('dotenv').config();
 
 const path = require('path');
 
-//Mongo Access
-// Mongo access
+
+//Mongo access
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_URI, {
   auth: {

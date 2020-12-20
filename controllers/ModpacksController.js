@@ -72,9 +72,6 @@ exports.show = async (req, res) => {
   
   exports.update = async (req, res) => {
     try {
-      // const { user: email } = req.session.passport;
-      // const user = await User.findOne({email: email});
-  
       let modpack = await Modpack.findById(req.body.id);
       if (!modpack) throw new Error('Modpack could not be found');
   
